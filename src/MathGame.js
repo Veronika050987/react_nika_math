@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './MathGame.css';
 
 import happy from './img/happy.png';
 import unhappy from './img/unhappy.png';
@@ -103,12 +104,12 @@ export default function MathGame() {
   const cards = Array.from({ length: maxCardValue + 1 }, (_, i) => i);
 
   return (
-    <div style={styles.container}>
+    <div className='container'>
       {screen === 'menu' ? (
-        <div style={styles.menuBox}>
-          <h1 style={styles.title}> Математика для детей </h1>
-          <p style={styles.subtitle}>Выбери математическое действие:</p>
-          <div style={styles.menuButtons}>
+        <div className='menuBox'>
+          <h1 className='title'> Математика для детей </h1>
+          <p className='subtitle'>Выбери математическое действие:</p>
+          <div className='menuButtons'>
             <button onClick={() => startMode('addition')} style={{...styles.btn, ...styles.btnAdd}}>➕ Сложение</button>
             <button onClick={() => startMode('subtraction')} style={{...styles.btn, ...styles.btnSub}}>➖ Вычитание</button>
             <button onClick={() => startMode('multiplication')} style={{...styles.btn, ...styles.btnMul}}>✖ Умножение</button>
@@ -116,11 +117,11 @@ export default function MathGame() {
           </div>
         </div>
       ) : (
-        <div style={styles.gameBox}>
+        <div className='gameBox'>
           <button onClick={backToMenu} style={styles.btnBack}>⬅ В меню</button>
           
           {/* Интерактивная шкала прогресса и смайлики */}
-          <div style={styles.progressRow}>
+          <div className='progressRow'>
             <span style={{
               ...styles.emoji, 
               opacity: feedback === 'wrong' ? 1 : 0.3,
@@ -145,17 +146,17 @@ export default function MathGame() {
           </div>
 
           {/* Поле с примером */}
-          <div style={styles.equationBox}>
+          <div className='equationBox'>
             {num1} {OPERATORS[mode]} {num2} = ?
           </div>
 
           {/* Сетка карточек-ответов */}
-          <div style={styles.cardsGrid}>
+          <div className='cardsGrid'>
             {cards.map((num) => (
               <button 
                 key={num} 
                 onClick={() => handleAnswerClick(num)} 
-                style={styles.cardBtn}
+                className='cardBtn'
                 disabled={feedback !== null}
               >
                 {num}
@@ -165,13 +166,13 @@ export default function MathGame() {
 
           {/* Модальное окно при ошибке */}
           {showModal && (
-            <div style={styles.modalOverlay}>
-              <div style={styles.modalContent}>
+            <div className='modalOverlay'>
+              <div className='modalContent'>
                 <h2 style={{color: '#e74c3c', marginTop: 0}}>Ой, неверно! 
                   <img src={unhappy} width={40} height={40} alt='UNHAPPY' loading="lazy" aspectRatio= '1 / 1'/>
                   </h2>
-                <p style={styles.modalText}>Правильный ответ:</p>
-                <div style={styles.correctBadge}>{correctAnswer}</div>
+                <p className='modalText'>Правильный ответ:</p>
+                <div className='correctBadge'>{correctAnswer}</div>
                 <button 
                   onClick={() => generateQuestion(mode)} 
                   style={styles.btnNext}
@@ -184,8 +185,8 @@ export default function MathGame() {
 
           {/* Поздравление при победе (10 очков) */}
           {score === 10 && (
-            <div style={styles.modalOverlay}>
-              <div style={styles.modalContent}>
+            <div className='modalOverlay'>
+              <div className='modalContent'>
                 <h2 style={{color: '#2ecc71', marginTop: 0}}>🎉 Победа! 🎉</h2>
                 <p style={styles.modalText}>Ты отлично справился со всеми заданиями!</p>
                 <button onClick={backToMenu} style={styles.btnNext}>Ура!</button>
@@ -200,40 +201,7 @@ export default function MathGame() {
 
 // Стили приложения
 const styles = {
-  container: {
-    fontFamily: '"Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: '100vh',
-    backgroundColor: '#f0f4f8',
-    padding: '20px',
-    boxSizing: 'border-box',
-  },
-  menuBox: {
-    backgroundColor: '#ffffff',
-    padding: '40px',
-    borderRadius: '24px',
-    boxShadow: '0 10px 25px rgba(0,0,0,0.05)',
-    textAlign: 'center',
-    maxWidth: '500px',
-    width: '100%',
-  },
-  title: {
-    fontSize: '2rem',
-    color: '#2c3e50',
-    marginBottom: '10px',
-  },
-  subtitle: {
-    color: '#7f8c8d',
-    fontSize: '1.1rem',
-    marginBottom: '30px',
-  },
-  menuButtons: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '15px',
-  },
+  
   btn: {
     padding: '16px 20px',
     fontSize: '1.2rem',
@@ -248,35 +216,19 @@ const styles = {
   btnSub: { backgroundColor: '#4D96FF' },
   btnMul: { backgroundColor: '#6BCB77' },
   btnDiv: { backgroundColor: '#FFD93D', color: '#2c3e50' },
-  gameBox: {
-    position: 'relative',
-    backgroundColor: '#ffffff',
-    padding: '30px',
-    borderRadius: '24px',
-    boxShadow: '0 10px 25px rgba(0,0,0,0.05)',
-    maxWidth: '650px',
-    width: '100%',
-    textAlign: 'center',
-  },
-  btnBack: {
-    position: 'absolute',
-    top: '20px',
-    left: '20px',
-    padding: '8px 14px',
-    border: 'none',
-    borderRadius: '8px',
-    backgroundColor: '#eee',
-    cursor: 'pointer',
-    fontWeight: '600',
-  },
-  progressRow: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '15px',
-    marginTop: '40px',
-    marginBottom: '30px',
-  },
+  
+  // btnBack: {
+  //   position: 'absolute',
+  //   top: '20px',
+  //   left: '20px',
+  //   padding: '8px 14px',
+  //   border: 'none',
+  //   borderRadius: '8px',
+  //   backgroundColor: '#eee',
+  //   cursor: 'pointer',
+  //   fontWeight: '600',
+  // },
+  
   emoji: {
     fontSize: '2.5rem',
     transition: 'all 0.3s ease',
@@ -294,67 +246,7 @@ const styles = {
     backgroundColor: '#2ecc71',
     transition: 'width 0.4s ease-out',
   },
-  equationBox: {
-    fontSize: '3.5rem',
-    fontWeight: 'bold',
-    color: '#2c3e50',
-    margin: '30px 0',
-    background: '#f8f9fa',
-    padding: '20px',
-    borderRadius: '16px',
-    border: '2px dashed #e2e8f0',
-  },
-  cardsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(60px, 1fr))',
-    gap: '12px',
-    marginTop: '20px',
-  },
-  cardBtn: {
-    aspectRatio: '1',
-    fontSize: '1.4rem',
-    fontWeight: 'bold',
-    backgroundColor: '#fff',
-    border: '3px solid #cbd5e1',
-    borderRadius: '12px',
-    cursor: 'pointer',
-    transition: 'all 0.1s ease',
-    color: '#334155',
-    boxShadow: '0 4px 0 #cbd5e1',
-    outline: 'none',
-    ':active': {
-      transform: 'translateY(4px)',
-      boxShadow: 'none',
-    }
-  },
-  modalOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(255,255,255,0.95)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: '24px',
-    zIndex: 10,
-  },
-  modalContent: {
-    textAlign: 'center',
-    padding: '20px',
-  },
-  modalText: {
-    fontSize: '1.2rem',
-    color: '#64748b',
-    margin: '5px 0',
-  },
-  correctBadge: {
-    fontSize: '4rem',
-    fontWeight: 'bold',
-    color: '#2ecc71',
-    margin: '15px 0',
-  },
+  
 btnNext: {
 display: 'inline-flex',
 alignItems: 'center',

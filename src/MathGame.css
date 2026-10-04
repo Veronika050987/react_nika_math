@@ -32,20 +32,7 @@
     flex-direction: column;
     gap: 15px;
   }
-  .btn {
-    padding: 16px 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    color: #fff;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .btnAdd { background-color: #FF6B6B };
-  .btnSub { background-color: #4D96FF };
-  .btnMul { background-color: #6BCB77 };
-  .btnDiv { background-color: #FFD93D; color: #2c3e50 };
+  
   .gameBox {
     position: relative;
     background-color: #ffffff;
@@ -75,23 +62,7 @@
     margin-top: 40px;
     margin-bottom: 30px;
   }
-  .emoji {
-    font-size: 2.5rem;
-    transition: all 0.3s ease;
-    user-select: none;
-  }
-  .progressBarBg {
-    flex: 1;
-    height: 20px;
-    background-color: #e0e6ed;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .progressBarFill {
-    height: 100%;
-    background-color: #2ecc71;
-    transition: width 0.4s ease-out;
-  }
+
   .equationBox {
     font-size: 3.5rem;
     font-weight: bold;
@@ -154,17 +125,3 @@
     color: #2ecc71;
     margin: 15px 0;
   }
-.btnNext {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 12px;
-padding: 10px 24px;
-font-size: 1.2rem;
-background-color: #4D96FF;
-color: #fff;
-border: none;
-border-radius: 12px;
-cursor: pointer;
-font-weight: bold;
-}

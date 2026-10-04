@@ -24,6 +24,8 @@ export default function MathGame() {
   const [feedback, setFeedback] = useState(null); // 'correct', 'wrong' или null
   const [showModal, setShowModal] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(null);
+  const [isBackHovered, setIsBackHovered] = useState(false);
+  const [totalQuestions, setTotalQuestions] = useState(0); // Всего решенных примеров
 
   // Генерация нового примера
   const generateQuestion = (currentMode) => {
@@ -41,12 +43,16 @@ export default function MathGame() {
         n2 = temp;
       }
     } else if (currentMode === 'division') {
-      // Исключаем деление на 0 и делаем деление нацело
-      if (n2 === 0) n2 = 1;
-      // Генерируем частное и находим делимое
-      const quotient = Math.floor(Math.random() * 10);
-      n1 = quotient * n2; 
-    }
+  // 1. Делитель (на что делим) должен быть от 1 до 9 (на 0 делить нельзя!)
+  const divisor = Math.floor(Math.random() * 9) + 1; 
+  
+  // 2. Частное (наш будущий ответ) тоже должно быть в пределах карточек (от 1 до 10)
+  const quotient = Math.floor(Math.random() * 10) + 1; 
+  
+  // 3. Вычисляем делимое (что делим). Оно гарантированно разделится нацело!
+  n1 = divisor * quotient; // Например, 3 * 4 = 12
+  n2 = divisor;            // В примере будет: 12 ÷ 3 = 4 (ответ 4 есть на карточках!)
+}
 
     setNum1(n1);
     setNum2(n2);
@@ -67,6 +73,7 @@ export default function MathGame() {
   const startMode = (selectedMode) => {
     setMode(selectedMode);
     setScore(0);
+    setTotalQuestions(0); // Сбрасываем счётчик при начале новой игры
     setScreen('game');
     generateQuestion(selectedMode);
   };
@@ -76,6 +83,7 @@ export default function MathGame() {
     if (feedback !== null) return; // Защита от повторных кликов до генерации нового примера
 
     const actualAnswer = getAnswer();
+    setTotalQuestions((prev) => prev + 1); // Увеличиваем общее число попыток
 
     if (userAnswer === actualAnswer) {
       setFeedback('correct');
@@ -83,7 +91,7 @@ export default function MathGame() {
       // Через 1.5 секунды переходим к следующему вопросу
       setTimeout(() => {
         generateQuestion(mode);
-      }, 1500);
+      }, 2300);
     } else {
       setFeedback('wrong');
       setCorrectAnswer(actualAnswer);
@@ -118,7 +126,18 @@ export default function MathGame() {
         </div>
       ) : (
         <div className='gameBox'>
-          <button onClick={backToMenu} style={styles.btnBack}>⬅ В меню</button>
+          <button 
+            onClick={backToMenu} 
+            onMouseEnter={() => setIsBackHovered(true)}
+            onMouseLeave={() => setIsBackHovered(false)}
+            style={{
+            ...styles.btnBack,
+            // Если мышка наведена, меняем цвет фона и немного приподнимаем кнопку
+            backgroundColor: isBackHovered ? '#3b82f6' : '#4D96FF', 
+            transform: isBackHovered ? 'translateY(-2px)' : 'translateY(0)',
+            }}>
+          ⬅ В меню
+          </button>
           
           {/* Интерактивная шкала прогресса и смайлики */}
           <div className='progressRow'>
@@ -187,9 +206,22 @@ export default function MathGame() {
           {score === 10 && (
             <div className='modalOverlay'>
               <div className='modalContent'>
-                <h2 style={{color: '#2ecc71', marginTop: 0}}>🎉 Победа! 🎉</h2>
-                <p style={styles.modalText}>Ты отлично справился со всеми заданиями!</p>
-                <button onClick={backToMenu} style={styles.btnNext}>Ура!</button>
+                <h2 style={{color: '#4D96FF', marginTop: 0}}>Игра завершена!</h2>
+                <div style={{ margin: '20px 0' }}>
+                  <p style={styles.modalText}>Твой результат:</p>
+                  <div style={{
+                    fontSize: '3rem',
+                    fontWeight: 'bold',
+                    color: '#2ecc71',
+                    margin: '10px 0'
+                    }}>
+                    {score} из {totalQuestions}
+                  </div>
+            <p style={{ ...styles.modalText, fontSize: '1rem', color: '#7f8c8d' }}>
+            (Правильных ответов / Всего попыток)
+            </p>
+            </div>
+                <button onClick={backToMenu} style={styles.btnNext}>Отлично!</button>
               </div>
             </div>
           )}
@@ -212,22 +244,25 @@ const styles = {
     color: '#fff',
     transition: 'transform 0.2s, box-shadow 0.2s',
   },
+  
   btnAdd: { backgroundColor: '#FF6B6B' },
   btnSub: { backgroundColor: '#4D96FF' },
   btnMul: { backgroundColor: '#6BCB77' },
   btnDiv: { backgroundColor: '#FFD93D', color: '#2c3e50' },
   
-  // btnBack: {
-  //   position: 'absolute',
-  //   top: '20px',
-  //   left: '20px',
-  //   padding: '8px 14px',
-  //   border: 'none',
-  //   borderRadius: '8px',
-  //   backgroundColor: '#eee',
-  //   cursor: 'pointer',
-  //   fontWeight: '600',
-  // },
+  btnBack: {
+    position: 'absolute',
+    top: '20px',
+    left: '20px',
+    padding: '8px 14px',
+    border: 'none',
+    borderRadius: '8px',
+    backgroundColor: '#4D96FF',
+    color: '#ffffff',
+    cursor: 'pointer',
+    fontWeight: '600',
+    transition: 'all 0.2s ease',
+  },
   
   emoji: {
     fontSize: '2.5rem',

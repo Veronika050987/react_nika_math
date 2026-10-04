@@ -4,12 +4,12 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f4f8;
+    background-color: #3CB371;
     padding: 20px;
     box-sizing: border-box;
   }
   .menuBox {
-    background-color: #ffffff;
+    background-color: #E0FFFF;
     padding: 40px;
     border-radius: 24px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.05);
@@ -35,7 +35,7 @@
   
   .gameBox {
     position: relative;
-    background-color: #ffffff;
+    background-color:#E0FFFF;
     padding: 30px;
     border-radius: 24px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.05);
@@ -79,6 +79,7 @@
     gap: 12px;
     margin-top: 20px;
   }
+
   .cardBtn {
     aspect-ratio: 1;
     font-size: 1.4rem;
@@ -95,6 +96,7 @@
     .cardBtn:active {
       transform: translateY(4px);
       box-shadow: none;
+      background-color:#2ecc71;
     }
 
   .modalOverlay {

@@ -1,0 +1,170 @@
+.container {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f4f8;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .menuBox {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+  }
+  .title {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+  .menuButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .btn {
+    padding: 16px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btnAdd { background-color: #FF6B6B };
+  .btnSub { background-color: #4D96FF };
+  .btnMul { background-color: #6BCB77 };
+  .btnDiv { background-color: #FFD93D; color: #2c3e50 };
+  .gameBox {
+    position: relative;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    max-width: 650px;
+    width: 100%;
+    text-align: center;
+  }
+  .btnBack {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #eee;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .progressRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+  .emoji {
+    font-size: 2.5rem;
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+  .progressBarBg {
+    flex: 1;
+    height: 20px;
+    background-color: #e0e6ed;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .progressBarFill {
+    height: 100%;
+    background-color: #2ecc71;
+    transition: width 0.4s ease-out;
+  }
+  .equationBox {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 30px 0;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 16px;
+    border: 2px dashed #e2e8f0;
+  }
+  .cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .cardBtn {
+    aspect-ratio: 1;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background-color: #fff;
+    border: 3px solid #cbd5e1;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    color: #334155;
+    box-shadow: 0 4px 0 #cbd5e1;
+    outline: none;
+  }
+    .cardBtn:active {
+      transform: translateY(4px);
+      box-shadow: none;
+    }
+
+  .modalOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 24px;
+    z-index: 10;
+  }
+  .modalContent {
+    text-align: center;
+    padding: 20px;
+  }
+  .modalText {
+    font-size: 1.2rem;
+    color: #64748b;
+    margin: 5px 0;
+  }
+  .correctBadge {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #2ecc71;
+    margin: 15px 0;
+  }
+.btnNext {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+padding: 10px 24px;
+font-size: 1.2rem;
+background-color: #4D96FF;
+color: #fff;
+border: none;
+border-radius: 12px;
+cursor: pointer;
+font-weight: bold;
+}

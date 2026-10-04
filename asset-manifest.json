@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/react_nika_math/static/css/main.f319f49b.css",
-    "main.js": "/react_nika_math/static/js/main.6329347b.js",
+    "main.css": "/react_nika_math/static/css/main.4802ac1b.css",
+    "main.js": "/react_nika_math/static/js/main.1b1d6b0c.js",
     "static/js/453.9e1f9f45.chunk.js": "/react_nika_math/static/js/453.9e1f9f45.chunk.js",
     "static/media/happy.png": "/react_nika_math/static/media/happy.79655e6167f4b6fb2d91.png",
     "static/media/unhappy.png": "/react_nika_math/static/media/unhappy.65a16d09aad2da249489.png",
     "index.html": "/react_nika_math/index.html",
-    "main.f319f49b.css.map": "/react_nika_math/static/css/main.f319f49b.css.map",
-    "main.6329347b.js.map": "/react_nika_math/static/js/main.6329347b.js.map",
+    "main.4802ac1b.css.map": "/react_nika_math/static/css/main.4802ac1b.css.map",
+    "main.1b1d6b0c.js.map": "/react_nika_math/static/js/main.1b1d6b0c.js.map",
     "453.9e1f9f45.chunk.js.map": "/react_nika_math/static/js/453.9e1f9f45.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f319f49b.css",
-    "static/js/main.6329347b.js"
+    "static/css/main.4802ac1b.css",
+    "static/js/main.1b1d6b0c.js"
   ]
 }
